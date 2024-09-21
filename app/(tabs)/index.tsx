@@ -359,13 +359,13 @@ export default function HomeScreen() {
           <Text style={styles.bookTitle}>{selectedBook.name}</Text>
           {[...Array(selectedBook.chapters)].map((_, index) => (
             <TouchableOpacity key={index} onPress={() => handleChapterPress(index + 1)}>
-              <Text style={styles.chapterItem}>Capítulo {index + 1}</Text>
+              <Text style={styles.chapterItem}>{language === 'en' ? 'Chapter' : 'Capítulo'} {index + 1}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
       ) : view === 'verses' && selectedChapter && selectedBook ? (
         <ScrollView>
-          <Text style={styles.bookTitle}>{`${selectedBook.name} - Capítulo ${selectedChapter}`}</Text>
+          <Text style={styles.bookTitle}>{`${selectedBook.name} - ${language === 'en' ? 'Chapter' : 'Capítulo'} ${selectedChapter}`}</Text>
           {verses.map((verse) => (
             <TouchableOpacity key={verse.id} onPress={() => handleVersePress(verse.number)}>
               <Text style={styles.chapterItem}><Text style={styles.verseID}>{verse.number}</Text> {verse.verse}</Text>
